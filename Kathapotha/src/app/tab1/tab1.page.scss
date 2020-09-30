@@ -1,18 +1,38 @@
-.newbgok{
-    
-    background-color: red!important;
+.newbgok {
+  background-color: red !important;
 }
-ion-title{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 100;
-}
-
-.new-background-color{
-    --background: #000000;
-    color: rgb(255, 255, 255);
+ion-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
 }
 
-.section-text{
-    font-family: 'Poppins', sans-serif;
-    font-weight: 200;
+.new-background-color {
+  --background: #000000;
+  color: rgb(255, 255, 255);
+}
+
+.section-text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+}
+ion-slides {
+  height: 110%;
+}
+
+.slidetext {
+  font-family: "Poppins", sans-serif;
+  font-size: 10px;
+}
+
+.banner {
+  padding-top: 20px;
+}
+ion-card-content{
+    font-size: 10px;
+    padding-left: 10px;
+}
+ion-card-subtitle{
+    // padding-top: 5px;
+    padding-left: 10px;
+
 }

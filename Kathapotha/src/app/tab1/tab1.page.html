@@ -1,18 +1,110 @@
-<ion-header >
+<ion-header>
   <ion-toolbar class="new-background-color">
-    <ion-title >
-      Stores Book
-    </ion-title>
+    <ion-title> Stores Book </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-<ion-row>
-  <ion-col class="ion-padding" size="12">
-    <ion-text>
-      <h6 class="section-text">Top new stores</h6>
-    </ion-text>
-  </ion-col>
-</ion-row>
+<ion-content>
 
+  <ion-row>
+    <ion-col size="12">
+      <ion-searchbar placeholder="Gajaman Nona" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="always"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col class="ion-padding" size="12">
+      <ion-text>
+        <h6 class="section-text">Top new stores  </h6>
+       
+      </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <!-- slider start  -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-slides pager="false" [options]="slideOpts">
+        <ion-slide>
+          <div class="slide">
+            <img
+              src="assets/image/slider/74c15e53e2c4aed7853c3f165553bee7.png"
+              alt=""
+            />
+            <h6 class="slidetext">Andare - අන්දරේ</h6>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div>
+            <img
+              src="assets/image/slider/f1bfe27dbb4d9461275a349e86885255.png"
+              alt=""
+            />
+            <h6 class="slidetext">Gajaman Nona - ගජමන් නෝනා</h6>
+          </div>
+        </ion-slide>
+        <ion-slide>
+          <div>
+            <img src="assets/image/slider/Image 3.png" alt="" />
+            <h6 class="slidetext">Andare - අන්දරේ</h6>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+
+  <!-- banner -->
+
+  <div class="banner">
+    <img width="100%" src="assets/image/bodybanner.png" alt="banner" />
+  </div>
+
+  <ion-row>
+    <ion-col class="ion-padding" size="6">
+      <ion-text>
+        <h6 class="section-text">Stores</h6>
+      </ion-text>
+    </ion-col>
+    <ion-col class="ion-padding" size="6">
+      <ion-text>
+        <h6 class="section-text tex" class="ion-text-right" color="primary">
+          See all
+          <ion-badge color="danger">3</ion-badge></h6>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+
+  <ion-card>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="5">
+          <img src="assets/image/story/Image 4.png" alt="" />
+        </ion-col>
+        <ion-col size="7">
+          <ion-card-subtitle>Saradiel සූරසරදියෙල්</ion-card-subtitle>
+          <ion-card-content>
+            ‘සරදියෙල්’ (Saradiel) the cyborg space pirate & his companion mech
+            drone ‘මම්මලේ’ (Mammale) in 3010 CYLON
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="5">
+          <img src="assets/image/story/image5.png" alt="" />
+        </ion-col>
+        <ion-col size="7">
+          <ion-card-subtitle>Mahadena Muththa - මහදැන මුත්තා</ion-card-subtitle>
+          <ion-card-content>
+            Mahadena Muththa at the tombstones of his foster sons who served in
+            the Third World War ජනකතා 
+          </ion-card-content>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>
