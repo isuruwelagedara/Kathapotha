@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>player</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-back-button (click)="stopplayer()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-list>
+    <ion-item
+      color="dark"
+      *ngFor="let track of playlist"
+      (click)="start(track)"
+    >
+      <ion-label class="ion-text-center" [color]="track == activeTrack ? 'danger' : 'light' "
+        >{{track.name}}</ion-label
+      >
+    </ion-item>
+  </ion-list>
+
+  <ion-col size="12" class="ion-text-center">
+    <ion-img src="assets/image/podcast.png"></ion-img>
+
+    <ion-row>
+      <ion-col class="ion-padding" size="12" class="ion-text-center">
+        <h6>
+          Mahadena Muththa at the tombstones of his foster sons who served in
+          the Third World War ජනකතා - Mini art series of Sri Lankan Folk stories
+          in a futuristic theme.
+        </h6>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-content>
+
+<ion-footer *ngIf="activeTrack">
+  <ion-toolbar color="dark">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        {{activeTrack.name}}
+      </ion-col>
+      <ion-col size="12">
+        <ion-range
+          #range
+          [(ngModel)]="progress"
+          max="100"
+          color="danger"
+          (touchend)="seek()"
+          (mouseup)="seek()"
+        >
+        </ion-range>
+      </ion-col>
+
+      <ion-col size="12" class="ion-text-center">
+        <!-- <ion-button Fill="clear"  (click)="prev()" color="light">
+          <ion-icon name="play-skip-back-outline"></ion-icon>
+        </ion-button> -->
+
+        <ion-button
+          size="large"
+          Fill="clear"
+          (click)="togglePlayer(false)"
+          *ngIf="!isplaying"
+          color="danger"
+        >
+          <ion-icon name="play-circle-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button
+          size="large"
+          Fill="clear"
+          (click)="togglePlayer(true)"
+          *ngIf="isplaying"
+          color="danger"
+        >
+          <ion-icon name="pause-circle-outline"></ion-icon>
+        </ion-button>
+
+        <!-- <ion-button Fill="clear"   (click)="next()" color="light">
+          <ion-icon name="play-skip-forward-outline"></ion-icon>
+        </ion-button> -->
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>
