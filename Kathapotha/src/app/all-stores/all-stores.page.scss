@@ -1,0 +1,24 @@
+ion-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+}
+
+.new-background-color {
+  --background: #000000;
+  color: rgb(255, 255, 255);
+}
+
+ion-card-content {
+  font-size: 10px;
+  padding-left: 10px;
+}
+ion-card-subtitle {
+  // padding-top: 5px;
+  padding-left: 10px;
+}
+
+span {
+    font-size: 10px;
+    text-align: right;
+    padding-left: 129px;
+}

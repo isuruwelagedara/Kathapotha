@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Stores Book</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+    <ion-card size="12" *ngFor="let store of Stores" (click)="radestory(store)">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="5">
+            <img width="100%" src="{{store.poster}}" alt="" />
+          </ion-col>
+          <ion-col size="7">
+            <ion-card-subtitle>{{store.name}}</ion-card-subtitle>
+            <ion-card-content>
+              Mahadena Muththa at the tombstones of his foster sons who served in
+              the Third World War ජනකතා 
+            </ion-card-content>
+            <span>{{store.CREATE_TS}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+
+
+</ion-content>

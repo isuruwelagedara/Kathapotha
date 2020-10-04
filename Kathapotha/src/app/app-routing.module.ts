@@ -7,8 +7,12 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'player',
+    path: 'player/:id',
     loadChildren: () => import('./player/player.module').then( m => m.PlayerPageModule)
+  },
+  {
+    path: 'all-stores',
+    loadChildren: () => import('./all-stores/all-stores.module').then( m => m.AllStoresPageModule)
   }
 ];
 @NgModule({

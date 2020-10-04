@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+
 
 
 @Component({
@@ -21,6 +24,13 @@ export class Tab1Page {
     loop: true,
   };
 
-  constructor() {}
+  constructor( private router: Router ) {}
+
+
+  StoresBook(){
+
+    this.router.navigate(['all-stores/']);
+
+  }
 
 }

@@ -1,11 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IonRange } from '@ionic/angular';
 import { Howl, Howler } from 'howler';
 
-export interface Track {
+export interface store {
+  id: string;
   name: string;
-  path: string;
+  caption: string;
+  poster: string;
+  path: any;
+  CREATE_TS: any
 }
+
 
 @Component({
   selector: 'app-player',
@@ -14,53 +21,86 @@ export interface Track {
 })
 export class PlayerPage implements OnInit {
 
-  playlist: Track[] = [
 
-    {
-      name: 'Andare - අන්දරේ',
-      path: "https://firebasestorage.googleapis.com/v0/b/lankahub-24c28.appspot.com/o/Video%2Faudio1.mp3?alt=media&token=8a861b26-adc0-4d39-babf-f5114e512656",
-    },
-    // {
-    //   name: 'Gajaman Nona - ගජමන් නෝනා',
-    //   path: "assets/audio/audio2.mp3",
-    // },
+  playtrack: store;
 
-  ];
-
-  activeTrack: Track = null;
+  activeTrack = null;
   player: Howl = null;
   isplaying = false;
   progress = 0;
+  min = 0;
+  sec = 0;
+  songurl: any
+
+
+  // ----- local var
+
+  lname: any;
+  lposter: any;
+  lcaption: any;
+
+
   @ViewChild('range', { static: false }) range: IonRange;
 
-  constructor() { }
+
+  public postid;
+
+
+
+
+  constructor(private route: ActivatedRoute, private http: HttpClient) { }
 
   ngOnInit() {
 
+    var url = "assets/data/stores.json"
 
- 
+    let postid = this.route.snapshot.params['id'];
+
+    // get data from jsone 
+    this.http.get<store[]>(url)
+      .subscribe(data => {
+        // var ptest = data[postid];
+        this.playtrack = data[postid];
+        // console.log(data[postid].name);
+
+        this.songurl = this.playtrack.path;
+        this.lname = this.playtrack.name;
+        this.lposter = this.playtrack.poster;
+        this.lcaption = this.playtrack.caption;
+
+        console.log(this.songurl)
+      });
+
+    this.start();
+
   }
 
-
-  start(track: Track) {
+  start() {
 
     if (this.player) {
       this.player.stop();
     }
 
     this.player = new Howl({
-      src: [track.path],
+      src: [this.songurl],
       html5: true,
+      autoplay: true,
+      loop: true,
+      volume: 0.9,
+      preload: true,
+      format: ['dolby'],
 
       onplay: () => {
 
         this.isplaying = true;
-        this.activeTrack = track;
+        this.activeTrack = this.songurl;
         this.updateprgress();
+     
       },
 
       onend: () => {
-
+        this.player.stop();
+        this.isplaying = false;
       }
     });
     this.player.play();
@@ -104,15 +144,27 @@ export class PlayerPage implements OnInit {
     this.progress = (seek / this.player.duration()) * 100 || 0
     setTimeout(() => {
       this.updateprgress();
+
     }, 1000)
 
   }
 
-
-  stopplayer(){
+  stopplayer() {
     this.player.stop();
   }
 
+
+
+  taketime() {
+
+    this.player.duration();
+    console.log();
+
+  }
+
 }
+
+
+
 
 
